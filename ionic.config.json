@@ -1,0 +1,7 @@
+{
+  "name": "miscuentas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

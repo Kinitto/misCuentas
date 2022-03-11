@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-icon name="arrow-back-outline" class="ion-padding" routerLink="/home"></ion-icon>
+  <div class="principal">
+    <h3 class="ion-padding">Agregar/Editar</h3>
+    <div class="form ion-padding ion-margin">
+      <ion-select [(ngModel)]="tipo" interface="action-sheet" placeholder="Selecciona tipo">
+        <ion-select-option >entrante</ion-select-option>
+        <ion-select-option >saliente</ion-select-option>
+      </ion-select>
+
+      <ion-input placeholder="Título" [(ngModel)]="titulo"></ion-input>
+      <ion-input placeholder="Información" [(ngModel)]="informacion"></ion-input>
+      <ion-input placeholder="Cantidad" type="number" [(ngModel)]="cantidad"></ion-input>
+
+      <ion-button color="dark" *ngIf="agregar == true" (click)="addRegistro()">Agregar</ion-button>
+      <ion-button color="dark" *ngIf="editar == true" (click)="editRegistro()">Editar</ion-button>
+
+    </div>
+  </div>
+</ion-content>
