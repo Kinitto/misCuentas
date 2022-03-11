@@ -27,11 +27,13 @@ export class AgregarEditarPage implements OnInit {
         if(this.router.url == '/agregar-editar/agregar'){
           this.agregar = true;
           this.editar = false;
+
         }
-        else{
+        if(this.activeRoute.snapshot.params['id'] != null){
           this.editar = true;
-          this.getActualRegistro();
           this.agregar = false;
+          this.getActualRegistro();
+
         }
       }
     });
@@ -46,7 +48,7 @@ export class AgregarEditarPage implements OnInit {
     cantidad: 0
   }
   addRegistro(){
-    this.registro.titulo = this.titulo ,this.registro.cantidad = this.cantidad
+this.registro.cantidad = this.cantidad
     this.registro.informacion = this.informacion ,this.registro.tipo = this.tipo
 
     this.fireService.addRegistro(this.registro);
@@ -64,15 +66,18 @@ export class AgregarEditarPage implements OnInit {
   }
 
   getActualRegistro(){
-    this.fireService.getRegistroById(this.activeRoute.snapshot.params['id']).subscribe({
-      next: resp =>{
-        this.titulo=resp.titulo;this.tipo=resp.tipo,
-        this.informacion=resp.informacion,this.cantidad=resp.cantidad;
-        this.id= resp.id;
-      },
-      error: err=>{
-        console.log(err)
-      }
-    });
+    if(this.editar==true){
+      this.fireService.getRegistroById(this.activeRoute.snapshot.params['id']).subscribe({
+        next: resp =>{
+          this.titulo=resp.titulo,this.tipo=resp.tipo,
+          this.informacion=resp.informacion,this.cantidad=resp.cantidad;
+          this.id= resp.id;
+        },
+        error: err=>{
+          console.log(err)
+        }
+      });
+    }
+
   }
 }

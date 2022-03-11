@@ -8,7 +8,7 @@ import { FireBaseServiceService } from '../service/fire-base-service.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  mostrar: boolean = false;
   registros: Registro[]=[];
   constructor(private fireService:FireBaseServiceService) {}
 
@@ -19,6 +19,7 @@ export class HomePage implements OnInit {
   getRegistros(){
     this.fireService.getRegistros().subscribe({
       next:(resp=>{this.registros=resp})
+
     })
   }
   deleteRegistro(registro: Registro){
