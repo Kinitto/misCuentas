@@ -48,7 +48,7 @@ export class AgregarEditarPage implements OnInit {
     cantidad: 0
   }
   addRegistro(){
-this.registro.cantidad = this.cantidad
+     this.registro.titulo=this.titulo, this.registro.cantidad = this.cantidad
     this.registro.informacion = this.informacion ,this.registro.tipo = this.tipo
 
     this.fireService.addRegistro(this.registro);
